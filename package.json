@@ -1,0 +1,50 @@
+{
+  "name": "presentation-frame",
+  "version": "2.0.0",
+  "description": "The Augmented.js Next - Presentation Frame Module.",
+  "main": "dist/presentation-frame.js",
+  "scripts": {
+    "dev": "webpack --mode development --module-bind js=babel-loader --progress",
+    "build": "webpack --mode production --module-bind js=babel-loader --progress",
+    "lint": "eslint ./dist/presentation-frame.js",
+    "test": "mocha --require babel-core/register --require test/helper.js -c test/*Spec.js",
+    "start": "node index.js",
+    "docs": "rm -rf jsdoc && jsdoc ./src -r -d ./jsdoc/ -R ./README.md -t ./node_modules/foodoc/template -c ./jsdoc.conf.json -P ./package.json",
+    "readme": "./node_modules/documentation/bin/documentation.js readme ./src/index.js -f md --section=API",
+    "clean": "rm -rf node_modules",
+    "reinstall": "npm run clean && npm install",
+    "rebuild": "npm run clean && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Augmentedjs/presentation-frame.git"
+  },
+  "keywords": [
+    "augmentedjs",
+    "presentation"
+  ],
+  "author": "Bob Warren <jedi.master@augmentedjs.com> (http://www.augmentedjs.com)",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.2.0",
+    "documentation": "^9.3.1",
+    "eslint": "^5.16.0",
+    "foodoc": "0.0.9",
+    "jsdoc": "^3.5.5",
+    "jsdom": "^14.0.0",
+    "mocha": "^6.0.2",
+    "mocha-jsdom": "^2.0.0",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "presentation-decorator": "^2.6.0"
+  },
+  "bugs": {
+    "url": "https://github.com/Augmentedjs/presentation-frame/issues"
+  },
+  "homepage": "http://www.augmentedjs.com"
+}
