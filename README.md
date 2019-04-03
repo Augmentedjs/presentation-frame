@@ -1,2 +1,2 @@
-# presentation-frame
-Augemnetd.js Presentation - Application Frame
+# presentation-facets
+Augemnetd.js Presentation - Configurable facet View
