@@ -4,7 +4,6 @@ import Dom from "presentation-dom";
 import { createTemplate } from "./functions.js";
 
 const FILTER_FORM_ID = "filterForm";
-const Logger = console;
 
 class FacetView extends DirectiveView {
   constructor(options) {
@@ -17,7 +16,7 @@ class FacetView extends DirectiveView {
   };
 
   render() {
-    createTemplate(this);
+    this.template = createTemplate(this);
     return super.render();
   };
 
@@ -44,7 +43,7 @@ class FacetView extends DirectiveView {
       }
     });
     const json = JSON.stringify(object);
-    Logger.debug("form:" + json);
+    console.debug("form:" + json);
     //this.sendMessage(FETCH_ASSETS, json);
   };
 
@@ -52,11 +51,11 @@ class FacetView extends DirectiveView {
     const id = e.target.getAttribute(`data-${this.name}`);
     const el = Dom.toggleClass(`#${id}`, "collapse");
     Dom.toggleClass(e.target, "collapse");
-    Logger.debug(`Toggle - ${el} id: ${id}`);
+    console.debug(`Toggle - ${el} id: ${id}`);
   };
 
   filter(e) {
-    Logger.debug("Filter was changed - submit");
+    console.debug("Filter was changed - submit");
     this.submit(e);
   };
 
@@ -67,14 +66,14 @@ class FacetView extends DirectiveView {
       if (myEl) {
         myEl.classList.add("hide");
       } else {
-        Logger.warn("El did not select");
+        console.warn("El did not select");
       }
     } else {
       const myEl = Dom.selector(this.el);
       if (myEl) {
         myEl.classList.remove("hide");
       } else {
-        Logger.warn("El did not select");
+        console.warn("El did not select");
       }
     }
   };

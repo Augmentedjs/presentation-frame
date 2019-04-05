@@ -13,6 +13,8 @@ const FIELDS = {
   "PROJECT": { "name": "Projects", "id": "project" },
   "STATUS": { "name": "Status", "id": "status" }
 };
+
+const FILTER_FORM_ID = "filterForm";
 // ---
 
 export const createCheckboxes = (viewName, field, group) => {
@@ -24,7 +26,7 @@ export const createCheckboxes = (viewName, field, group) => {
   return html;
 };
 
-export const createTemplate = async (view) => {
+export const createTemplate = (view) => {
   try {
     /*await Promise.all([
       view.vendors.fetch(),
@@ -102,7 +104,7 @@ export const createTemplate = async (view) => {
     */
     return template;
   } catch (e) {
-    Logger.error(e);
+    console.error(e);
     //await view.injectTemplate(`Failed - ${e}`);
     return null;
   }
