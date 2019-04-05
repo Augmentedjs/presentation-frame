@@ -1,28 +1,19 @@
 import { DirectiveView } from "presentation-decorator";
-//import Logger from "../logger/logger.js";
 import Dom from "presentation-dom";
-//import { FETCH_ASSETS } from "../constants/messages.js";
-// collections, should not be here
-//import Vendors from "../collections/vendors.js";
-//import Projects from "../collections/projects.js";
 
-import { createCheckboxes, createTemplate } from "./functions.js";
+import { createTemplate } from "./functions.js";
 
-const MOUNT_POINT = "#filters";
 const FILTER_FORM_ID = "filterForm";
-
 const Logger = console;
 
 class FacetView extends DirectiveView {
-  constructor() {
-    super({
-      "el": MOUNT_POINT,
-      "name": "filters",
-      "style": "view"
-    });
-    // data collections (should not be here)
-    //this.vendors = new Vendors();
-    //this.projects = new Projects();
+  constructor(options) {
+    super(options);
+    this._filters = [];
+  };
+
+  addFilter(id, name, collection) {
+    this._filters.push({ "id": id, "name": name, "collection": collection });
   };
 
   render() {
@@ -31,9 +22,6 @@ class FacetView extends DirectiveView {
   };
 
   remove() {
-    // data collections (should not be here)
-    //this.vendors = null;
-    //this.projects = null;
     return super.remove();
   };
 
@@ -73,7 +61,7 @@ class FacetView extends DirectiveView {
   };
 
   toggle(hide) {
-    alert("hide " + hide + " el " + this.el);
+    //alert("hide " + hide + " el " + this.el);
     if (hide) {
       const myEl = Dom.selector(this.el);
       if (myEl) {

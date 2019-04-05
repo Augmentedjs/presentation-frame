@@ -26,25 +26,37 @@ export const createCheckboxes = (viewName, field, group) => {
 
 export const createTemplate = async (view) => {
   try {
-
-    await Promise.all([
+    /*await Promise.all([
       view.vendors.fetch(),
       //view.locations.fetch(),
       view.projects.fetch()
     ]);
-
     const [vendors, projects] = await Promise.all([
       view.vendors.toJSON(),
       //view.locations.toJSON(),
       view.projects.toJSON()
     ]);
-
+    */
+    const filters = view._filters;
+    const l = filters.length;
+    let i = 0, template = `<div class="content"><h1></h1><form id="${FILTER_FORM_ID}">`;
+    for (i; i < l; i++) {
+      template += `
+        <h2 data-${view.name}="${filters[i].id}" data-click="collapse" class="toggle collapse">${filters[i].name}</h2>
+        <div id="${FIELDS.PROJECT.id}" class="toggle collapse">
+          ${createCheckboxes(filters[i].name, filters[i].collection, filters[i].id)}
+        </div>
+      `;
+    }
+    template += `<button type="submit" data-${view.name}="submit" data-click="submit">Filter</button></form></div>`;
+    /*
     const [venderCheck, projectCheck] = await Promise.all([
       createCheckboxes(view.name, vendors, FIELDS.VENDOR.id),
       //createCheckboxes(view.name, locations, FIELDS.LOCATIONS.id),
       createCheckboxes(view.name, projects, FIELDS.PROJECT.id)
     ]);
-
+    */
+    /*
     const template = `
       <div class="content">
         <h1></h1>
@@ -87,11 +99,11 @@ export const createTemplate = async (view) => {
       view.syncBoundElement(FIELDS.VENDOR.id),
       view.syncBoundElement(FIELDS.LOCATIONS.id)
     ]);
-
-    return true;
+    */
+    return template;
   } catch (e) {
     Logger.error(e);
-    await view.injectTemplate(`Failed - ${e}`);
-    return e;
+    //await view.injectTemplate(`Failed - ${e}`);
+    return null;
   }
 };
