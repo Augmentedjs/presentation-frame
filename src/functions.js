@@ -1,21 +1,9 @@
-import { DirectiveView } from "presentation-decorator";
-import Application from "../application/application.js";
-import Logger from "../logger/logger.js";
-import Dom from "presentation-dom";
-import { FETCH_ASSETS } from "../constants/messages.js";
-// collections
-import Vendors from "../collections/vendors.js";
-//import DataCenters from "../collections/dataCenters.js";
-//import Locations from "../collections/locations.js";
-import Projects from "../collections/projects.js";
-
+// this is data, should not be here
 const STATUS = [
   { "name": "Ordered", "value": "ordered" },
   { "name": "Shipped", "value": "shipped" }
 ];
 
-const MOUNT_POINT = "#filters";
-const FILTER_FORM_ID = "filterForm";
 const FIELDS = {
   "ASSETS": { "name": "Assets", "id": "assets" },
   "CONTRACTS": { "name": "Contracts", "id": "contracts" },
@@ -25,8 +13,9 @@ const FIELDS = {
   "PROJECT": { "name": "Projects", "id": "project" },
   "STATUS": { "name": "Status", "id": "status" }
 };
+// ---
 
-const createCheckboxes = (viewName, field, group) => {
+export const createCheckboxes = (viewName, field, group) => {
   let html = "", i = 0;
   const l = (field.length) ? (field.length) : 0;
   for (i = 0; i < l; i++) {
@@ -35,8 +24,9 @@ const createCheckboxes = (viewName, field, group) => {
   return html;
 };
 
-const createTemplate = async (view) => {
+export const createTemplate = async (view) => {
   try {
+
     await Promise.all([
       view.vendors.fetch(),
       //view.locations.fetch(),
@@ -105,89 +95,3 @@ const createTemplate = async (view) => {
     return e;
   }
 };
-
-class Filters extends DirectiveView {
-  constructor() {
-    super({
-      "el": MOUNT_POINT,
-      "name": "filters",
-      "style": "view"
-    });
-    this.vendors = new Vendors();
-    //this.locations = new Locations();
-    this.projects = new Projects();
-  };
-
-  render() {
-    createTemplate(this);
-    return super.render();
-  };
-
-  remove() {
-    //console.debug("removing filters", this.el);
-    this.vendors = null;
-    //this.locations = null;
-    this.projects = null;
-
-    //this.removeTemplate(this.el, true);
-    //const el = Dom.selector(this.el);
-    //el.innerHTML = "";
-    return super.remove();
-  };
-
-  submit(e) {
-    e.preventDefault();
-    const formData = new FormData(document.querySelector(`#${FILTER_FORM_ID}`));
-    const object = {};
-    formData.forEach((value, key) => {
-      if (object[key]) {
-        if (Array.isArray(object[key])) {
-          object[key].push(value);
-        } else {
-          const arr = [];
-          arr.push(object[key]);
-          arr.push(value);
-          object[key] = arr;
-        }
-      } else {
-        object[key] = value;
-      }
-    });
-    const json = JSON.stringify(object);
-    Logger.debug("form:" + json);
-    this.sendMessage(FETCH_ASSETS, json);
-  };
-
-  collapse(e) {
-    const id = e.target.getAttribute(`data-${this.name}`);
-    const el = Dom.toggleClass(`#${id}`, "collapse");
-    Dom.toggleClass(e.target, "collapse");
-    Logger.debug(`Toggle - ${el} id: ${id}`);
-  };
-
-  filter(e) {
-    Logger.debug("Filter was changed - submit");
-    this.submit(e);
-  };
-
-  toggle(hide) {
-    alert("hide " + hide + " el " + this.el);
-    if (hide) {
-      const myEl = Dom.selector(this.el);
-      if (myEl) {
-        myEl.classList.add("hide");
-      } else {
-        Logger.warn("El did not select");
-      }
-    } else {
-      const myEl = Dom.selector(this.el);
-      if (myEl) {
-        myEl.classList.remove("hide");
-      } else {
-        Logger.warn("El did not select");
-      }
-    }
-  };
-};
-
-export default Filters;

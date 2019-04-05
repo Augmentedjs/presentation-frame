@@ -7,9 +7,9 @@ module.exports = {
   target: "web",
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'presentation-frame.js',
+    filename: 'presentation-facets.js',
     publicPath: '/dist/',
-    library: "presentation-frame",
+    library: "presentation-facets",
     globalObject: 'this',
     libraryTarget: "umd",
     umdNamedDefine: true
@@ -31,6 +31,12 @@ module.exports = {
       commonjs2: 'presentation-decorator',
       amd: 'presentation-decorator',
       root: 'presentation-decorator'
+    },
+    'presentation-dom': {
+      commonjs: 'presentation-dom',
+      commonjs2: 'presentation-dom',
+      amd: 'presentation-dom',
+      root: 'presentation-dom'
     }
   },
   stats: "errors-only",

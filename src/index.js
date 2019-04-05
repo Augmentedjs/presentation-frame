@@ -1,3 +1,3 @@
-import Frame from "./frame.js";
+import FacetView from "./facetView.js";
 
-module.exports = Frame;
+module.exports = FacetView;

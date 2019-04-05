@@ -8,7 +8,7 @@ global.navigator = {
   userAgent: 'node.js'
 };
 
-global.Frame = require("../dist/presentation-frame.js");
+global.FacetView = require("../dist/presentation-facets.js");
 
 const chai = require("chai");
 global.chai = chai;
