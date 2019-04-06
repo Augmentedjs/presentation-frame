@@ -1,6 +1,6 @@
 {
   "name": "presentation-facets",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "The Augmented.js Next - Presentation Facets Module.",
   "main": "dist/presentation-facets.js",
   "scripts": {
@@ -26,19 +26,30 @@
   "author": "Bob Warren <jedi.master@augmentedjs.com> (http://www.augmentedjs.com)",
   "license": "Apache-2.0",
   "devDependencies": {
-    "babel-core": "^6.26.3",
+    "@babel/core": "^7.4.0",
+    "@babel/polyfill": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/register": "^7.4.0",
+    "acorn": "^6.1.1",
+    "acorn-dynamic-import": "^4.0.0",
     "babel-loader": "^8.0.5",
-    "babel-preset-env": "^1.7.0",
     "chai": "^4.2.0",
+    "clean-webpack-plugin": "^2.0.1",
+    "css-loader": "^2.1.1",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-bundle-analyzer": "^3.1.0",
+    "webpack-cli": "^3.3.0",
     "documentation": "^9.3.1",
     "eslint": "^5.16.0",
     "foodoc": "0.0.9",
     "jsdoc": "^3.5.5",
     "jsdom": "^14.0.0",
     "mocha": "^6.0.2",
-    "mocha-jsdom": "^2.0.0",
-    "webpack": "^4.25.1",
-    "webpack-cli": "^3.1.2"
+    "mocha-jsdom": "^2.0.0"
   },
   "dependencies": {
     "presentation-decorator": "^2.6.0",

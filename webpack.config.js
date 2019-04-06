@@ -1,8 +1,10 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require("path");
+const webpack = require("webpack");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['./src/index.js'],
   context: __dirname,
   target: "web",
   output: {
@@ -22,6 +24,41 @@ module.exports = {
         use: {
           loader: "babel-loader"
         }
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          { "loader": "file-loader",
+          options: {
+            name: '[name].[ext]',
+          }}
+        ]
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        use: [
+          { "loader": "file-loader",
+          options: {
+            name: '[name].[ext]',
+          }}
+        ]
+      },
+      {
+        test: /\.(css|scss)$/,
+        use: [{
+          loader: "style-loader"
+        },
+        MiniCssExtractPlugin.loader,
+        {
+          loader: "css-loader", options: {
+            sourceMap: true
+          }
+        },
+        {
+          loader: "sass-loader", options: {
+            sourceMap: true
+          }
+        }]
       }
     ]
   },
@@ -42,6 +79,13 @@ module.exports = {
   stats: "errors-only",
   devtool: "source-map",
   plugins: [
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    }),
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(require("./package.json").version)
     })

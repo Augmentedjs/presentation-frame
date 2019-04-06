@@ -41,7 +41,7 @@ export const createTemplate = (view) => {
     */
     const filters = view._filters;
     const l = filters.length;
-    let i = 0, template = `<div class="content"><h1></h1><form id="${FILTER_FORM_ID}">`;
+    let i = 0, template = `<div class="filters"><div class="content"><h1></h1><form id="${FILTER_FORM_ID}">`;
     for (i; i < l; i++) {
       template += `
         <h2 data-${view.name}="${filters[i].id}" data-click="collapse" class="toggle collapse">${filters[i].name}</h2>
@@ -50,7 +50,7 @@ export const createTemplate = (view) => {
         </div>
       `;
     }
-    template += `<button type="submit" data-${view.name}="submit" data-click="submit">Filter</button></form></div>`;
+    template += `<button type="submit" data-${view.name}="submit" data-click="submit">Filter</button></form></div></div>`;
     /*
     const [venderCheck, projectCheck] = await Promise.all([
       createCheckboxes(view.name, vendors, FIELDS.VENDOR.id),

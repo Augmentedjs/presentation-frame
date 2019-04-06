@@ -7,6 +7,15 @@ const FILTER_FORM_ID = "filterForm";
 
 class FacetView extends DirectiveView {
   constructor(options) {
+    if (!options) {
+      options = {};
+    }
+    if (options.style) {
+      options.style += " filters";
+    } else {
+      options.style = "filters";
+    }
+
     super(options);
     this._filters = [];
   };
