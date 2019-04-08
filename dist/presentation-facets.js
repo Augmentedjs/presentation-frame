@@ -1,2 +1,462 @@
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t(require("presentation-decorator"),require("presentation-dom")):"function"==typeof define&&define.amd?define("presentation-facets",["presentation-decorator","presentation-dom"],t):"object"==typeof exports?exports["presentation-facets"]=t(require("presentation-decorator"),require("presentation-dom")):e["presentation-facets"]=t(e["presentation-decorator"],e["presentation-dom"])}(this,function(e,t){return function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}return n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/dist/",n(n.s=0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){"use strict";var r,o=n(2),i=(r=o)&&r.__esModule?r:{default:r};e.exports=i.default},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n(3),o=s(n(4)),i=(s(n(5)),n(9));function s(e){return e&&e.__esModule?e:{default:e}}function a(e,t,n,r,o,i,s){try{var a=e[i](s),l=a.value}catch(e){return void n(e)}a.done?t(l):Promise.resolve(l).then(r,o)}function l(e){return function(){var t=this,n=arguments;return new Promise(function(r,o){var i=e.apply(t,n);function s(e){a(i,r,o,s,l,"next",e)}function l(e){a(i,r,o,s,l,"throw",e)}s(void 0)})}}const c="filterForm";u=l(function*(e){e.template=yield(0,i.createTemplate)(e)});var u;f=l(function*(e){const t=e._filters.length;let n=0;for(;n<t;n++)yield e.syncBoundElement(e._filters[n].id)});var f;t.default=class extends r.DirectiveView{constructor(e){e||(e={}),e.style?e.style+=" filters":e.style="filters",super(e),this._filters=[]}addFilter(e,t,n){this._filters.push({id:e,name:t,collection:n})}render(){return this.template=(0,i.createTemplate)(this),super.render(),this.syncAllBoundElements(),this.delegateEvents(),this}remove(){return super.remove()}submit(e){e.preventDefault();const t=new FormData(document.querySelector(`#${c}`)),n={};t.forEach((e,t)=>{if(n[t])if(Array.isArray(n[t]))n[t].push(e);else{const r=[];r.push(n[t]),r.push(e),n[t]=r}else n[t]=e});const r=JSON.stringify(n);console.debug("form:"+r)}collapse(e){const t=e.target.getAttribute(`data-${this.name}`),n=o.default.toggleClass(`#${t}`,"collapse");o.default.toggleClass(e.target,"collapse"),console.debug(`Toggle - ${n} id: ${t}`)}filter(e){console.debug("Filter was changed - submit"),this.submit(e)}toggle(e){if(e){const e=o.default.selector(this.el);e?e.classList.add("hide"):console.warn("El did not select")}else{const e=o.default.selector(this.el);e?e.classList.remove("hide"):console.warn("El did not select")}}}},function(t,n){t.exports=e},function(e,n){e.exports=t},function(e,t,n){var r=n(6);"string"==typeof r&&(r=[[e.i,r,""]]);var o={hmr:!0,transform:void 0,insertInto:void 0};n(7)(r,o);r.locals&&(e.exports=r.locals)},function(e,t,n){},function(e,t,n){var r,o,i={},s=(r=function(){return window&&document&&document.all&&!window.atob},function(){return void 0===o&&(o=r.apply(this,arguments)),o}),a=function(e){var t={};return function(e,n){if("function"==typeof e)return e();if(void 0===t[e]){var r=function(e,t){return t?t.querySelector(e):document.querySelector(e)}.call(this,e,n);if(window.HTMLIFrameElement&&r instanceof window.HTMLIFrameElement)try{r=r.contentDocument.head}catch(e){r=null}t[e]=r}return t[e]}}(),l=null,c=0,u=[],f=n(8);function d(e,t){for(var n=0;n<e.length;n++){var r=e[n],o=i[r.id];if(o){o.refs++;for(var s=0;s<o.parts.length;s++)o.parts[s](r.parts[s]);for(;s<r.parts.length;s++)o.parts.push(y(r.parts[s],t))}else{var a=[];for(s=0;s<r.parts.length;s++)a.push(y(r.parts[s],t));i[r.id]={id:r.id,refs:1,parts:a}}}}function p(e,t){for(var n=[],r={},o=0;o<e.length;o++){var i=e[o],s=t.base?i[0]+t.base:i[0],a={css:i[1],media:i[2],sourceMap:i[3]};r[s]?r[s].parts.push(a):n.push(r[s]={id:s,parts:[a]})}return n}function h(e,t){var n=a(e.insertInto);if(!n)throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");var r=u[u.length-1];if("top"===e.insertAt)r?r.nextSibling?n.insertBefore(t,r.nextSibling):n.appendChild(t):n.insertBefore(t,n.firstChild),u.push(t);else if("bottom"===e.insertAt)n.appendChild(t);else{if("object"!=typeof e.insertAt||!e.insertAt.before)throw new Error("[Style Loader]\n\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\n Must be 'top', 'bottom', or Object.\n (https://github.com/webpack-contrib/style-loader#insertat)\n");var o=a(e.insertAt.before,n);n.insertBefore(t,o)}}function v(e){if(null===e.parentNode)return!1;e.parentNode.removeChild(e);var t=u.indexOf(e);t>=0&&u.splice(t,1)}function m(e){var t=document.createElement("style");if(void 0===e.attrs.type&&(e.attrs.type="text/css"),void 0===e.attrs.nonce){var r=function(){0;return n.nc}();r&&(e.attrs.nonce=r)}return b(t,e.attrs),h(e,t),t}function b(e,t){Object.keys(t).forEach(function(n){e.setAttribute(n,t[n])})}function y(e,t){var n,r,o,i;if(t.transform&&e.css){if(!(i="function"==typeof t.transform?t.transform(e.css):t.transform.default(e.css)))return function(){};e.css=i}if(t.singleton){var s=c++;n=l||(l=m(t)),r=x.bind(null,n,s,!1),o=x.bind(null,n,s,!0)}else e.sourceMap&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&"function"==typeof URL.revokeObjectURL&&"function"==typeof Blob&&"function"==typeof btoa?(n=function(e){var t=document.createElement("link");return void 0===e.attrs.type&&(e.attrs.type="text/css"),e.attrs.rel="stylesheet",b(t,e.attrs),h(e,t),t}(t),r=function(e,t,n){var r=n.css,o=n.sourceMap,i=void 0===t.convertToAbsoluteUrls&&o;(t.convertToAbsoluteUrls||i)&&(r=f(r));o&&(r+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(o))))+" */");var s=new Blob([r],{type:"text/css"}),a=e.href;e.href=URL.createObjectURL(s),a&&URL.revokeObjectURL(a)}.bind(null,n,t),o=function(){v(n),n.href&&URL.revokeObjectURL(n.href)}):(n=m(t),r=function(e,t){var n=t.css,r=t.media;r&&e.setAttribute("media",r);if(e.styleSheet)e.styleSheet.cssText=n;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(n))}}.bind(null,n),o=function(){v(n)});return r(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap)return;r(e=t)}else o()}}e.exports=function(e,t){if("undefined"!=typeof DEBUG&&DEBUG&&"object"!=typeof document)throw new Error("The style-loader cannot be used in a non-browser environment");(t=t||{}).attrs="object"==typeof t.attrs?t.attrs:{},t.singleton||"boolean"==typeof t.singleton||(t.singleton=s()),t.insertInto||(t.insertInto="head"),t.insertAt||(t.insertAt="bottom");var n=p(e,t);return d(n,t),function(e){for(var r=[],o=0;o<n.length;o++){var s=n[o];(a=i[s.id]).refs--,r.push(a)}e&&d(p(e,t),t);for(o=0;o<r.length;o++){var a;if(0===(a=r[o]).refs){for(var l=0;l<a.parts.length;l++)a.parts[l]();delete i[a.id]}}}};var g,w=(g=[],function(e,t){return g[e]=t,g.filter(Boolean).join("\n")});function x(e,t,n,r){var o=n?"":r.css;if(e.styleSheet)e.styleSheet.cssText=w(t,o);else{var i=document.createTextNode(o),s=e.childNodes;s[t]&&e.removeChild(s[t]),s.length?e.insertBefore(i,s[t]):e.appendChild(i)}}},function(e,t){e.exports=function(e){var t="undefined"!=typeof window&&window.location;if(!t)throw new Error("fixUrls requires window.location");if(!e||"string"!=typeof e)return e;var n=t.protocol+"//"+t.host,r=n+t.pathname.replace(/\/[^\/]*$/,"/");return e.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi,function(e,t){var o,i=t.trim().replace(/^"(.*)"$/,function(e,t){return t}).replace(/^'(.*)'$/,function(e,t){return t});return/^(#|data:|http:\/\/|https:\/\/|file:\/\/\/|\s*$)/i.test(i)?e:(o=0===i.indexOf("//")?i:0===i.indexOf("/")?n+i:r+i.replace(/^\.\//,""),"url("+JSON.stringify(o)+")")})}},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const r=t.createCheckboxes=((e,t,n)=>{let r="",o=0;const i=t.length?t.length:0;for(o=0;o<i;o++)r+=`<label><input type="checkbox" data-${e}="${t[o].name}" value="${t[o].value}" data-function="filter" name="${n}" />${t[o].name}</label>`;return r});t.createTemplate=(e=>{try{const t=e._filters,n=t.length;let o=0,i='<div class="filters"><div class="content"><h1></h1><form id="filterForm">';for(;o<n;o++)i+=`\n        <h2 data-${e.name}="${t[o].id}" data-click="collapse" class="toggle collapse">${t[o].name}</h2>\n        <div id="${t[o].id}" class="toggle collapse">\n          ${r(t[o].name,t[o].collection,t[o].id)}\n        </div>\n      `;return i+=`<button type="submit" data-${e.name}="submit" data-click="submit">Filter</button></form></div></div>`}catch(e){return console.error(e),null}})}])});
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("presentation-decorator"), require("presentation-dom"));
+	else if(typeof define === 'function' && define.amd)
+		define("presentation-facets", ["presentation-decorator", "presentation-dom"], factory);
+	else if(typeof exports === 'object')
+		exports["presentation-facets"] = factory(require("presentation-decorator"), require("presentation-dom"));
+	else
+		root["presentation-facets"] = factory(root["presentation-decorator"], root["presentation-dom"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_presentation_decorator__, __WEBPACK_EXTERNAL_MODULE_presentation_dom__) {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/dist/";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/constants.js":
+/*!**************************!*\
+  !*** ./src/constants.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const FILTER_FORM_ID = exports.FILTER_FORM_ID = "filterForm";
+
+/***/ }),
+
+/***/ "./src/facetView.js":
+/*!**************************!*\
+  !*** ./src/facetView.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _presentationDecorator = __webpack_require__(/*! presentation-decorator */ "presentation-decorator");
+
+var _presentationDom = __webpack_require__(/*! presentation-dom */ "presentation-dom");
+
+var _presentationDom2 = _interopRequireDefault(_presentationDom);
+
+var _functions = __webpack_require__(/*! ./functions.js */ "./src/functions.js");
+
+var _constants = __webpack_require__(/*! ./constants.js */ "./src/constants.js");
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+} // import styles from "./styles/main.scss";
+
+
+const DEFAULT_STYLE = "filters";
+
+class FacetView extends _presentationDecorator.DirectiveView {
+  constructor(options) {
+    if (!options) {
+      options = {};
+    }
+
+    if (options.style) {
+      options.style += ` ${DEFAULT_STYLE}`;
+    } else {
+      options.style = DEFAULT_STYLE;
+    }
+
+    super(options);
+
+    if (options.filters) {
+      this._filters = options.filters;
+    } else {
+      this._filters = [];
+    }
+
+    if (options.title) {
+      this._title = options.title;
+    } else {
+      this._title = null;
+    }
+
+    if (options.button && options.button) {
+      this._button = options.button;
+    } else {
+      this._button = null;
+    }
+  }
+
+  addFilter(id, name, collection) {
+    this._filters.push({
+      "id": id,
+      "name": name,
+      "collection": collection
+    });
+  }
+
+  get filters() {
+    return this._filters;
+  }
+
+  set filters(filters) {
+    if (filters) {
+      this._filters = filters;
+    } else {
+      this._filters = [];
+    }
+  }
+
+  render() {
+    this.template = (0, _functions.createTemplate)(this);
+    super.render();
+    this.syncAllBoundElements();
+    this.delegateEvents();
+    return this;
+  }
+
+  remove() {
+    return super.remove();
+  }
+
+  submit(e) {
+    e.preventDefault();
+    return this;
+  }
+
+  get selections() {
+    const formData = new FormData(document.querySelector(`#${_constants.FILTER_FORM_ID}`));
+    const object = {};
+    formData.forEach((value, key) => {
+      if (object[key]) {
+        if (Array.isArray(object[key])) {
+          object[key].push(value);
+        } else {
+          const arr = [];
+          arr.push(object[key]);
+          arr.push(value);
+          object[key] = arr;
+        }
+      } else {
+        object[key] = value;
+      }
+    });
+    const json = JSON.stringify(object);
+    return json;
+  }
+
+  collapse(e) {
+    const id = e.target.getAttribute(`data-${this.name}`);
+
+    const el = _presentationDom2.default.toggleClass(`#${id}`, "collapse");
+
+    _presentationDom2.default.toggleClass(e.target, "collapse"); //console.debug(`Toggle - ${el} id: ${id}`);
+
+  }
+
+  filter(e) {
+    //console.debug("Filter was changed - submit");
+    this.submit(e);
+  }
+
+  toggle(hide) {
+    //alert("hide " + hide + " el " + this.el);
+    if (hide) {
+      const myEl = _presentationDom2.default.selector(this.el);
+
+      if (myEl) {
+        myEl.classList.add("hide");
+      } else {
+        console.warn("El did not select");
+      }
+    } else {
+      const myEl = _presentationDom2.default.selector(this.el);
+
+      if (myEl) {
+        myEl.classList.remove("hide");
+      } else {
+        console.warn("El did not select");
+      }
+    }
+  }
+
+}
+
+;
+exports.default = FacetView;
+
+/***/ }),
+
+/***/ "./src/functions.js":
+/*!**************************!*\
+  !*** ./src/functions.js ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.syncMe = exports.renderMe = exports.createTemplate = exports.createCheckboxes = undefined;
+
+var _constants = __webpack_require__(/*! ./constants.js */ "./src/constants.js");
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
+const createCheckboxes = exports.createCheckboxes = (viewName, field, group) => {
+  let html = "",
+      i = 0;
+  const l = field.length ? field.length : 0;
+
+  for (i = 0; i < l; i++) {
+    html += `<label><input type="checkbox" data-${viewName}="${field[i].name}" value="${field[i].value}" data-function="filter" name="${group}" />${field[i].name}</label>`;
+  }
+
+  return html;
+};
+
+const createTemplate = exports.createTemplate = view => {
+  try {
+    const filters = view._filters;
+    const l = filters.length;
+    let i = 0,
+        template = `<div class="filters">${view._title ? "<h1>" + view._title + "</h1>" : ""}<form id="${_constants.FILTER_FORM_ID}">`;
+
+    for (i; i < l; i++) {
+      template += `
+        <h2 data-${view.name}="${filters[i].id}" data-click="collapse" class="toggle collapse">${filters[i].name}</h2>
+        <div id="${filters[i].id}" class="toggle collapse">
+          ${createCheckboxes(filters[i].name, filters[i].collection, filters[i].id)}
+        </div>
+      `;
+    }
+
+    if (view._button) {
+      template += `<button type="submit" data-${view.name}="submit" data-click="submit">${view._button}</button>`;
+    }
+
+    template += `</form></div>`;
+    return template;
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
+};
+
+const renderMe = exports.renderMe = (() => {
+  var _ref = _asyncToGenerator(function* (view) {
+    view.template = yield createTemplate(view);
+  });
+
+  return function renderMe(_x) {
+    return _ref.apply(this, arguments);
+  };
+})();
+
+const syncMe = exports.syncMe = (() => {
+  var _ref2 = _asyncToGenerator(function* (view) {
+    const l = view._filters.length;
+    let i = 0;
+
+    for (i; i < l; i++) {
+      yield view.syncBoundElement(view._filters[i].id);
+    }
+  });
+
+  return function syncMe(_x2) {
+    return _ref2.apply(this, arguments);
+  };
+})();
+
+/***/ }),
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _facetView = __webpack_require__(/*! ./facetView.js */ "./src/facetView.js");
+
+var _facetView2 = _interopRequireDefault(_facetView);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+module.exports = _facetView2.default;
+
+/***/ }),
+
+/***/ 0:
+/*!****************************!*\
+  !*** multi ./src/index.js ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! ./src/index.js */"./src/index.js");
+
+
+/***/ }),
+
+/***/ "presentation-decorator":
+/*!**********************************************************************************************************************************************************!*\
+  !*** external {"commonjs":"presentation-decorator","commonjs2":"presentation-decorator","amd":"presentation-decorator","root":"presentation-decorator"} ***!
+  \**********************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_presentation_decorator__;
+
+/***/ }),
+
+/***/ "presentation-dom":
+/*!**********************************************************************************************************************************!*\
+  !*** external {"commonjs":"presentation-dom","commonjs2":"presentation-dom","amd":"presentation-dom","root":"presentation-dom"} ***!
+  \**********************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_presentation_dom__;
+
+/***/ })
+
+/******/ });
+});
 //# sourceMappingURL=presentation-facets.js.map
