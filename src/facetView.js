@@ -6,7 +6,10 @@ import { createTemplate, renderMe, syncMe } from "./functions.js";
 import { FILTER_FORM_ID } from "./constants.js";
 
 const DEFAULT_STYLE = "filters";
-
+/**
+ * Simple selection facet view
+ * @extends DirectiveView
+ */
 class FacetView extends DirectiveView {
   constructor(options) {
     if (!options) {
@@ -38,10 +41,20 @@ class FacetView extends DirectiveView {
     }
   };
 
+  /**
+   * Add a filter to render
+   * @param {string} id ID of the group
+   * @param {string} name Name of the group
+   * @param {Array} Array of objects { name: value } of the selections
+   */
   addFilter(id, name, collection) {
     this._filters.push({ "id": id, "name": name, "collection": collection });
   };
 
+  /**
+   * Raw data of the filter data passed rendered
+   * @property {Array} filters
+   */
   get filters() {
     return this._filters;
   };
@@ -54,6 +67,9 @@ class FacetView extends DirectiveView {
     }
   };
 
+  /**
+   * Render the view
+   */
   render() {
     this.template = createTemplate(this);
     super.render();
@@ -62,15 +78,24 @@ class FacetView extends DirectiveView {
     return this;
   };
 
+  /**
+   * Remove the view
+   */
   remove() {
     return super.remove();
   };
 
+  /**
+   * Submit the selections
+   */
   submit(e) {
     e.preventDefault();
     return this;
   };
 
+  /**
+   * @property {Object} selections
+   */
   get selections() {
     const formData = new FormData(document.querySelector(`#${FILTER_FORM_ID}`));
     const object = {};
