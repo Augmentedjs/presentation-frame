@@ -45,7 +45,7 @@ export const createTemplate = (view) => {
     for (i; i < l; i++) {
       template += `
         <h2 data-${view.name}="${filters[i].id}" data-click="collapse" class="toggle collapse">${filters[i].name}</h2>
-        <div id="${FIELDS.PROJECT.id}" class="toggle collapse">
+        <div id="${filters[i].id}" class="toggle collapse">
           ${createCheckboxes(filters[i].name, filters[i].collection, filters[i].id)}
         </div>
       `;
@@ -94,13 +94,7 @@ export const createTemplate = (view) => {
 
     await view.injectTemplate(template);
 
-    await Promise.all([
-      view.syncBoundElement(FIELDS.ASSETS.id),
-      view.syncBoundElement(FIELDS.PROJECT.id),
-      view.syncBoundElement(FIELDS.CONTRACTS.id),
-      view.syncBoundElement(FIELDS.VENDOR.id),
-      view.syncBoundElement(FIELDS.LOCATIONS.id)
-    ]);
+    ;
     */
     return template;
   } catch (e) {

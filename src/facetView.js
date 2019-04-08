@@ -1,9 +1,22 @@
 import { DirectiveView } from "presentation-decorator";
 import Dom from "presentation-dom";
+import styles from "./styles/main.scss";
 
 import { createTemplate } from "./functions.js";
 
 const FILTER_FORM_ID = "filterForm";
+
+const renderMe = async (view) => {
+  view.template = await createTemplate(view);
+};
+
+const syncMe = async (view) => {
+  const l = view._filters.length;
+  let i = 0;
+  for (i; i < l; i++) {
+    await view.syncBoundElement(view._filters[i].id);
+  }
+};
 
 class FacetView extends DirectiveView {
   constructor(options) {
@@ -26,7 +39,15 @@ class FacetView extends DirectiveView {
 
   render() {
     this.template = createTemplate(this);
-    return super.render();
+    super.render();
+    /*const l = this._filters.length;
+    let i = 0;
+    for (i; i < l; i++) {
+      this.syncBoundElement(this._filters[i].id);
+    }*/
+    this.syncAllBoundElements();
+    this.delegateEvents();
+    return this;
   };
 
   remove() {
