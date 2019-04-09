@@ -3,9 +3,8 @@ import Dom from "presentation-dom";
 import Facet from "./models/facet.js";
 
 import { createTemplate } from "./functions.js";
-import { FACET_FORM_ID } from "./constants.js";
+import { FACET_FORM_ID, DEFAULT_STYLE } from "./constants.js";
 
-const DEFAULT_STYLE = "facets";
 /**
  * Simple selection facet view
  * @extends DirectiveView
@@ -22,8 +21,8 @@ class FacetView extends DirectiveView {
     }
 
     super(options);
-    if (options.filters) {
-      this._facets = options.filters;
+    if (options.facets) {
+      this._facets = options.facets;
     } else {
       this._facets = [];
     }
@@ -135,10 +134,10 @@ class FacetView extends DirectiveView {
     //console.debug(`Toggle - ${el} id: ${id}`);
   };
 
-  /*facet(e) {
+  facet(e) {
     //console.debug("Filter was changed - submit");
     this.submit(e);
-  };*/
+  };
 
   toggle(hide) {
     //alert("hide " + hide + " el " + this.el);
