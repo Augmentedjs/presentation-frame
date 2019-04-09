@@ -1,6 +1,6 @@
 {
   "name": "presentation-facets",
-  "version": "0.3.1",
+  "version": "2.0.0",
   "description": "The Augmented.js Next - Presentation Facets Module.",
   "main": "dist/presentation-facets.js",
   "scripts": {
@@ -53,7 +53,8 @@
   },
   "dependencies": {
     "presentation-decorator": "^2.6.0",
-    "presentation-dom": "^2.8.1"
+    "presentation-dom": "^2.8.1",
+    "presentation-models": "^2.6.3"
   },
   "bugs": {
     "url": "https://github.com/Augmentedjs/presentation-facets/issues"

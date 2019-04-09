@@ -1,10 +1,10 @@
 
-describe('Given Augmented Presentation FacetView', () => {
-	it('is defined', () => {
+describe("Given Augmented Presentation FacetView", () => {
+	it("is defined", () => {
 		expect(FacetView).to.not.be.undefined;
 	});
 
-	describe('Given an instance of FacetView', () => {
+	describe("Given an instance of FacetView", () => {
 		let view;
 
 		beforeEach(() => {
@@ -16,10 +16,13 @@ describe('Given Augmented Presentation FacetView', () => {
 			view = null;
 		});
 
-		it('instance is an instance of FacetView', () => {
+		it("instance is an instance of FacetView", () => {
 			expect(view instanceof FacetView).to.be.true;
 		});
 
-
+		it("can add facet data", () => {
+			const l = view.addFacet("identifier", "name", [], "check");
+			expect(l).to.not.equal(0);
+		});
 	});
 });

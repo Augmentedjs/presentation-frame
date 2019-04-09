@@ -1,11 +1,11 @@
 import { DirectiveView } from "presentation-decorator";
 import Dom from "presentation-dom";
-// import styles from "./styles/main.scss";
+import Facet from "./models/facet.js";
 
-import { createTemplate, renderMe, syncMe } from "./functions.js";
-import { FILTER_FORM_ID } from "./constants.js";
+import { createTemplate } from "./functions.js";
+import { FACET_FORM_ID } from "./constants.js";
 
-const DEFAULT_STYLE = "filters";
+const DEFAULT_STYLE = "facets";
 /**
  * Simple selection facet view
  * @extends DirectiveView
@@ -23,9 +23,9 @@ class FacetView extends DirectiveView {
 
     super(options);
     if (options.filters) {
-      this._filters = options.filters;
+      this._facets = options.filters;
     } else {
-      this._filters = [];
+      this._facets = [];
     }
 
     if (options.title) {
@@ -43,27 +43,28 @@ class FacetView extends DirectiveView {
 
   /**
    * Add a filter to render
-   * @param {string} id ID of the group
+   * @param {string} identifier ID of the group
    * @param {string} name Name of the group
-   * @param {Array} Array of objects { name: value } of the selections
+   * @param {Array} data Array of objects { name: value } of the selections
+   * @param {string} type A facet type (defaults to check)
    */
-  addFilter(id, name, collection) {
-    this._filters.push({ "id": id, "name": name, "collection": collection });
+  addFacet(identifier, name, data, type) {
+    return this._facets.push(new Facet({ "identifier": identifier, "name": name, "data": data, "type": type }));
   };
 
   /**
    * Raw data of the filter data passed rendered
-   * @property {Array} filters
+   * @property {Array} facets
    */
-  get filters() {
-    return this._filters;
+  get facets() {
+    return this._facets;
   };
 
-  set filters(filters) {
-    if (filters) {
-      this._filters = filters;
+  set facets(facets) {
+    if (facets) {
+      this._facets = facets;
     } else {
-      this._filters = [];
+      this._facets = [];
     }
   };
 
@@ -71,7 +72,7 @@ class FacetView extends DirectiveView {
    * Render the view
    */
   render() {
-    this.template = createTemplate(this);
+    this.template = createTemplate(this.name, this._facets, this._title, this._button);
     super.render();
     this.syncAllBoundElements();
     this.delegateEvents();
@@ -95,25 +96,35 @@ class FacetView extends DirectiveView {
 
   /**
    * @property {Object} selections
+   * @returns {Object} Returns an object of keys and values of selections from the facets
    */
   get selections() {
-    const formData = new FormData(document.querySelector(`#${FILTER_FORM_ID}`));
-    const object = {};
-    formData.forEach((value, key) => {
-      if (object[key]) {
-        if (Array.isArray(object[key])) {
-          object[key].push(value);
-        } else {
-          const arr = [];
-          arr.push(object[key]);
-          arr.push(value);
-          object[key] = arr;
-        }
+    let json = {};
+    try {
+      const formData = new FormData(Dom.selector(`#${FACET_FORM_ID}`));
+      if (formData) {
+        const object = {};
+        formData.forEach((value, key) => {
+          if (object[key]) {
+            if (Array.isArray(object[key])) {
+              object[key].push(value);
+            } else {
+              const arr = [];
+              arr.push(object[key]);
+              arr.push(value);
+              object[key] = arr;
+            }
+          } else {
+            object[key] = value;
+          }
+        });
+        json = JSON.stringify(object);
       } else {
-        object[key] = value;
+        throw new Error(`Could not read facet form for id ${FACET_FORM_ID}.`);
       }
-    });
-    const json = JSON.stringify(object);
+    } catch(e) {
+      console.error(e);
+    }
     return json;
   };
 
@@ -124,10 +135,10 @@ class FacetView extends DirectiveView {
     //console.debug(`Toggle - ${el} id: ${id}`);
   };
 
-  filter(e) {
+  /*facet(e) {
     //console.debug("Filter was changed - submit");
     this.submit(e);
-  };
+  };*/
 
   toggle(hide) {
     //alert("hide " + hide + " el " + this.el);
@@ -136,14 +147,14 @@ class FacetView extends DirectiveView {
       if (myEl) {
         myEl.classList.add("hide");
       } else {
-        console.warn("El did not select");
+        console.warn("El for facet did not select.");
       }
     } else {
       const myEl = Dom.selector(this.el);
       if (myEl) {
         myEl.classList.remove("hide");
       } else {
-        console.warn("El did not select");
+        console.warn("El for facet did not select.");
       }
     }
   };

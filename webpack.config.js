@@ -4,15 +4,15 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: ['./src/index.js'],
+  entry: ["./src/index.js"],
   context: __dirname,
   target: "web",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'presentation-facets.js',
-    publicPath: '/dist/',
+    path: path.resolve(__dirname, "dist"),
+    filename: "presentation-facets.js",
+    publicPath: "/dist/",
     library: "presentation-facets",
-    globalObject: 'this',
+    globalObject: "this",
     libraryTarget: "umd",
     umdNamedDefine: true
   },
@@ -30,7 +30,7 @@ module.exports = {
         use: [
           { "loader": "file-loader",
           options: {
-            name: '[name].[ext]',
+            name: "[name].[ext]",
           }}
         ]
       },
@@ -39,7 +39,7 @@ module.exports = {
         use: [
           { "loader": "file-loader",
           options: {
-            name: '[name].[ext]',
+            name: "[name].[ext]",
           }}
         ]
       },
@@ -63,17 +63,23 @@ module.exports = {
     ]
   },
   externals: {
-    'presentation-decorator': {
-      commonjs: 'presentation-decorator',
-      commonjs2: 'presentation-decorator',
-      amd: 'presentation-decorator',
-      root: 'presentation-decorator'
+    "presentation-decorator": {
+      commonjs: "presentation-decorator",
+      commonjs2: "presentation-decorator",
+      amd: "presentation-decorator",
+      root: "presentation-decorator"
     },
-    'presentation-dom': {
-      commonjs: 'presentation-dom',
-      commonjs2: 'presentation-dom',
-      amd: 'presentation-dom',
-      root: 'presentation-dom'
+    "presentation-dom": {
+      commonjs: "presentation-dom",
+      commonjs2: "presentation-dom",
+      amd: "presentation-dom",
+      root: "presentation-dom"
+    },
+    "presentation-models": {
+      commonjs: "presentation-dom",
+      commonjs2: "presentation-dom",
+      amd: "presentation-dom",
+      root: "presentation-dom"
     }
   },
   stats: "errors-only",

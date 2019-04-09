@@ -1,6 +1,6 @@
-import { FILTER_FORM_ID } from "./constants.js";
+import { FACET_FORM_ID } from "./constants.js";
 
-export const createCheckboxes = (viewName, field, group) => {
+const createCheckboxes = (viewName, field, group) => {
   let html = "", i = 0;
   const l = (field.length) ? (field.length) : 0;
   for (i = 0; i < l; i++) {
@@ -9,38 +9,26 @@ export const createCheckboxes = (viewName, field, group) => {
   return html;
 };
 
-export const createTemplate = (view) => {
+export const createTemplate = (viewName, facets, title, button) => {
   try {
-    const filters = view._filters;
-    const l = filters.length;
-    let i = 0, template = `<div class="filters">${(view._title) ? "<h1>" + view._title + "</h1>": ""}<form id="${FILTER_FORM_ID}">`;
+    const l = facets.length;
+    let i = 0, template = `<div class="filters">${(title) ? "<h1>" + title + "</h1>": ""}<form id="${FACET_FORM_ID}">`;
     for (i; i < l; i++) {
+      // TODO: support 'type'
       template += `
-        <h2 data-${view.name}="${filters[i].id}" data-click="collapse" class="toggle collapse">${filters[i].name}</h2>
-        <div id="${filters[i].id}" class="toggle collapse">
-          ${createCheckboxes(filters[i].name, filters[i].collection, filters[i].id)}
+        <h2 data-${viewName}="${facets[i].identifier}" data-click="collapse" class="toggle collapse">${facets[i].name}</h2>
+        <div id="${facets[i].identifier}" class="toggle collapse">
+          ${createCheckboxes(facets[i].name, facets[i].data, facets[i].identifier)}
         </div>
       `;
     }
-    if (view._button) {
-      template += `<button type="submit" data-${view.name}="submit" data-click="submit">${view._button}</button>`;
+    if (button) {
+      template += `<button type="submit" data-${viewName}="submit" data-click="submit">${button}</button>`;
     }
     template += `</form></div>`;
     return template;
   } catch (e) {
     console.error(e);
     return null;
-  }
-};
-
-export const renderMe = async (view) => {
-  view.template = await createTemplate(view);
-};
-
-export const syncMe = async (view) => {
-  const l = view._filters.length;
-  let i = 0;
-  for (i; i < l; i++) {
-    await view.syncBoundElement(view._filters[i].id);
   }
 };
