@@ -106,7 +106,7 @@ export const createTemplate = (viewName, facets, title, button) => {
         template += createColors(viewName, facets[i].data, facets[i].identifier);
       } else if (facets[i].type === "size") {
         template += createSizes(viewName, facets[i].data, facets[i].identifier);
-      } else if () {
+      } else if (facets[i].type === "image") {
         template += createImages(viewName, facets[i].data, facets[i].identifier);
       } else {
         template += createCheckboxes(viewName, facets[i].data, facets[i].identifier);
