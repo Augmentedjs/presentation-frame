@@ -6,7 +6,7 @@ const createCheckboxes = (viewName, field, group) => {
   for (i = 0; i < l; i++) {
     html += `
       <label>
-        <input type="checkbox" data-${viewName}="${field[i].name}" value="${field[i].value}" data-function="facet" name="${group}" />
+        <input type="checkbox" value="${field[i].value}" data-function="facet" name="${group}" />
         ${field[i].name}
       </label>
     `;
@@ -35,7 +35,7 @@ const createStars = (viewName, field, group) => {
   for (i = 0; i < l; i++) {
     html += `
       <label>
-        <input type="checkbox" data-${viewName}="${field[i].name}" value="${field[i].value}" data-function="facet" name="${group}" />
+        <input type="checkbox" value="${field[i].value}" data-function="facet" name="${group}" />
         ${renderNumStars(field[i].name)}
       </label>
     `;
@@ -63,7 +63,7 @@ export const createTemplate = (viewName, facets, title, button) => {
       template += `</div>`;
     }
     if (button) {
-      template += `<button type="submit" data-${viewName}="submit" data-click="submit">${button}</button>`;
+      template += `<button type="submit" data-${viewName}="${button.toLowerCase()}" data-click="submit">${button}</button>`;
     }
     template += `</form></div>`;
     return template;
