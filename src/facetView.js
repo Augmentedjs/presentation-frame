@@ -48,7 +48,10 @@ class FacetView extends DirectiveView {
    * @param {string} type A facet type (defaults to check)
    */
   addFacet(identifier, name, data, type) {
-    return this._facets.push(new Facet({ "identifier": identifier, "name": name, "data": data, "type": type }));
+    if (identifier && name && data) {
+      return this._facets.push(new Facet({ "identifier": identifier, "name": name, "data": data, "type": type }));
+    }
+    return this._facets.length;
   };
 
   /**
