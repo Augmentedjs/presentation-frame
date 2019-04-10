@@ -43,6 +43,21 @@ const createStars = (viewName, field, group) => {
   return html;
 };
 
+const createColors = (viewName, field, group) => {
+  let html = "", i = 0;
+  const l = (field.length) ? (field.length) : 0;
+  for (i = 0; i < l; i++) {
+    html += `
+      <label>
+        <input type="checkbox" value="${field[i].value}" data-function="facet" name="${group}"/>
+        <div style="background-color: ${field[i].color};" class="colorway"></div>
+        ${field[i].name}
+      </label>
+    `;
+  }
+  return html;
+};
+
 export const createTemplate = (viewName, facets, title, button) => {
   try {
     const l = facets.length;
@@ -56,7 +71,7 @@ export const createTemplate = (viewName, facets, title, button) => {
       if (facets[i].type === "star") {
         template += createStars(viewName, facets[i].data, facets[i].identifier);
       } else if (facets[i].type === "color") {
-        template += "color";
+        template += createColors(viewName, facets[i].data, facets[i].identifier);
       } else {
         template += createCheckboxes(viewName, facets[i].data, facets[i].identifier);
       }
