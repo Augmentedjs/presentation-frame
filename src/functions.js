@@ -74,6 +74,22 @@ const createSizes = (viewName, field, group) => {
   return html;
 };
 
+const createImages = (viewName, field, group) => {
+  let html = "", i = 0;
+  const l = (field.length) ? (field.length) : 0;
+  for (i = 0; i < l; i++) {
+    html += `
+      <label>
+        <input type="checkbox" value="${field[i].value}" data-function="facet" name="${group}"/>
+        <figure class="image">
+          <img src="${field[i].image}"/>
+        </figure>
+      </label>
+    `;
+  }
+  return html;
+};
+
 export const createTemplate = (viewName, facets, title, button) => {
   try {
     const l = facets.length;
@@ -90,6 +106,8 @@ export const createTemplate = (viewName, facets, title, button) => {
         template += createColors(viewName, facets[i].data, facets[i].identifier);
       } else if (facets[i].type === "size") {
         template += createSizes(viewName, facets[i].data, facets[i].identifier);
+      } else if () {
+        template += createImages(viewName, facets[i].data, facets[i].identifier);
       } else {
         template += createCheckboxes(viewName, facets[i].data, facets[i].identifier);
       }
