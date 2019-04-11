@@ -1,6 +1,6 @@
 {
   "name": "presentation-facets",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "The Augmented.js Next - Presentation Facets Module.",
   "main": "dist/presentation-facets.js",
   "scripts": {

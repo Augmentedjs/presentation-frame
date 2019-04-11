@@ -90,6 +90,23 @@ const createImages = (viewName, field, group) => {
   return html;
 };
 
+const createPrices = (viewName, field, group, range) => {
+  let html = createCheckboxes(viewName, field, group);
+  if (range) {
+    html += `
+      <label class="range">
+        Min
+        <input type="text" name="${group}-min"/>
+      </label>
+      <label class="range">
+        Max
+        <input type="text" name="${group}-max"/>
+      </label>
+    `;
+  }
+  return html;
+};
+
 export const createTemplate = (viewName, facets, title, button) => {
   try {
     const l = facets.length;
@@ -108,6 +125,8 @@ export const createTemplate = (viewName, facets, title, button) => {
         template += createSizes(viewName, facets[i].data, facets[i].identifier);
       } else if (facets[i].type === "image") {
         template += createImages(viewName, facets[i].data, facets[i].identifier);
+      } else if (facets[i].type === "price") {
+        template += createPrices(viewName, facets[i].data, facets[i].identifier, facets[i].range);
       } else {
         template += createCheckboxes(viewName, facets[i].data, facets[i].identifier);
       }

@@ -20,7 +20,11 @@ const Schema = {
     "type": {
       "description": "The visual style",
       "type" : "string",
-      "enum": ["check", "star", "color", "size", "image"]
+      "enum": ["check", "star", "color", "size", "image", "price"]
+    },
+    "range": {
+      "description": "A range entry",
+      "type" : "boolean"
     }
   }
 };
