@@ -66,9 +66,10 @@
           "simpl",
           "view"
         ],
-        "FacetView.html#filters": [
+        "FacetView.html#facets": [
           "data",
-          "facetview#filt",
+          "facet",
+          "facetview#facet",
           "filter",
           "member",
           "pass",
@@ -80,16 +81,17 @@
           "member",
           "select"
         ],
-        "FacetView.html#addFilter": [
+        "FacetView.html#addFacet": [
           "add",
-          "addfilt",
-          "array",
-          "facetview#addfilt",
+          "addfacet",
+          "data",
+          "facetview#addfacet",
           "filter",
           "function",
-          "id",
+          "identifi",
           "name",
-          "render"
+          "render",
+          "type"
         ],
         "FacetView.html#render": [
           "facetview#rend",
@@ -156,41 +158,27 @@
             "docs": {},
             "d": {
               "docs": {
-                "FacetView.html#addFilter": {
-                  "ref": "FacetView.html#addFilter",
+                "FacetView.html#addFacet": {
+                  "ref": "FacetView.html#addFacet",
                   "tf": 16.666666666666664
                 }
               },
               "f": {
                 "docs": {},
-                "i": {
+                "a": {
                   "docs": {},
-                  "l": {
+                  "c": {
                     "docs": {},
-                    "t": {
-                      "docs": {
-                        "FacetView.html#addFilter": {
-                          "ref": "FacetView.html#addFilter",
-                          "tf": 675
+                    "e": {
+                      "docs": {},
+                      "t": {
+                        "docs": {
+                          "FacetView.html#addFacet": {
+                            "ref": "FacetView.html#addFacet",
+                            "tf": 670
+                          }
                         }
                       }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "r": {
-            "docs": {},
-            "r": {
-              "docs": {},
-              "a": {
-                "docs": {},
-                "y": {
-                  "docs": {
-                    "FacetView.html#addFilter": {
-                      "ref": "FacetView.html#addFilter",
-                      "tf": 25
                     }
                   }
                 }
@@ -259,9 +247,13 @@
               "docs": {},
               "a": {
                 "docs": {
-                  "FacetView.html#filters": {
-                    "ref": "FacetView.html#filters",
+                  "FacetView.html#facets": {
+                    "ref": "FacetView.html#facets",
                     "tf": 16.666666666666664
+                  },
+                  "FacetView.html#addFacet": {
+                    "ref": "FacetView.html#addFacet",
+                    "tf": 20
                   }
                 }
               }
@@ -288,10 +280,28 @@
             }
           },
           "d": {
-            "docs": {
-              "FacetView.html#addFilter": {
-                "ref": "FacetView.html#addFilter",
-                "tf": 25
+            "docs": {},
+            "e": {
+              "docs": {},
+              "n": {
+                "docs": {},
+                "t": {
+                  "docs": {},
+                  "i": {
+                    "docs": {},
+                    "f": {
+                      "docs": {},
+                      "i": {
+                        "docs": {
+                          "FacetView.html#addFacet": {
+                            "ref": "FacetView.html#addFacet",
+                            "tf": 20
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -318,9 +328,9 @@
               "docs": {},
               "e": {
                 "docs": {
-                  "FacetView.html#addFilter": {
-                    "ref": "FacetView.html#addFilter",
-                    "tf": 25
+                  "FacetView.html#addFacet": {
+                    "ref": "FacetView.html#addFacet",
+                    "tf": 20
                   }
                 }
               }
@@ -358,8 +368,8 @@
               "docs": {},
               "s": {
                 "docs": {
-                  "FacetView.html#filters": {
-                    "ref": "FacetView.html#filters",
+                  "FacetView.html#facets": {
+                    "ref": "FacetView.html#facets",
                     "tf": 8.333333333333332
                   }
                 }
@@ -393,12 +403,12 @@
                   "docs": {},
                   "r": {
                     "docs": {
-                      "FacetView.html#filters": {
-                        "ref": "FacetView.html#filters",
+                      "FacetView.html#facets": {
+                        "ref": "FacetView.html#facets",
                         "tf": 8.333333333333332
                       },
-                      "FacetView.html#addFilter": {
-                        "ref": "FacetView.html#addFilter",
+                      "FacetView.html#addFacet": {
+                        "ref": "FacetView.html#addFacet",
                         "tf": 16.666666666666664
                       },
                       "FacetView.html#render": {
@@ -429,8 +439,8 @@
             "docs": {},
             "w": {
               "docs": {
-                "FacetView.html#filters": {
-                  "ref": "FacetView.html#filters",
+                "FacetView.html#facets": {
+                  "ref": "FacetView.html#facets",
                   "tf": 8.333333333333332
                 }
               }
@@ -613,6 +623,10 @@
                     "FacetView.html": {
                       "ref": "FacetView.html",
                       "tf": 12.5
+                    },
+                    "FacetView.html#facets": {
+                      "ref": "FacetView.html#facets",
+                      "tf": 750
                     }
                   },
                   "v": {
@@ -632,15 +646,18 @@
                             "docs": {},
                             "f": {
                               "docs": {},
-                              "i": {
+                              "a": {
                                 "docs": {},
-                                "l": {
+                                "c": {
                                   "docs": {},
-                                  "t": {
-                                    "docs": {
-                                      "FacetView.html#filters": {
-                                        "ref": "FacetView.html#filters",
-                                        "tf": 1150
+                                  "e": {
+                                    "docs": {},
+                                    "t": {
+                                      "docs": {
+                                        "FacetView.html#facets": {
+                                          "ref": "FacetView.html#facets",
+                                          "tf": 1150
+                                        }
                                       }
                                     }
                                   }
@@ -698,15 +715,18 @@
                                   "docs": {},
                                   "f": {
                                     "docs": {},
-                                    "i": {
+                                    "a": {
                                       "docs": {},
-                                      "l": {
+                                      "c": {
                                         "docs": {},
-                                        "t": {
-                                          "docs": {
-                                            "FacetView.html#addFilter": {
-                                              "ref": "FacetView.html#addFilter",
-                                              "tf": 1150
+                                        "e": {
+                                          "docs": {},
+                                          "t": {
+                                            "docs": {
+                                              "FacetView.html#addFacet": {
+                                                "ref": "FacetView.html#addFacet",
+                                                "tf": 1150
+                                              }
                                             }
                                           }
                                         }
@@ -766,12 +786,12 @@
                   "docs": {},
                   "r": {
                     "docs": {
-                      "FacetView.html#filters": {
-                        "ref": "FacetView.html#filters",
-                        "tf": 758.3333333333334
+                      "FacetView.html#facets": {
+                        "ref": "FacetView.html#facets",
+                        "tf": 8.333333333333332
                       },
-                      "FacetView.html#addFilter": {
-                        "ref": "FacetView.html#addFilter",
+                      "FacetView.html#addFacet": {
+                        "ref": "FacetView.html#addFacet",
                         "tf": 16.666666666666664
                       }
                     }
@@ -794,8 +814,8 @@
                       "docs": {},
                       "n": {
                         "docs": {
-                          "FacetView.html#addFilter": {
-                            "ref": "FacetView.html#addFilter",
+                          "FacetView.html#addFacet": {
+                            "ref": "FacetView.html#addFacet",
                             "tf": 110
                           },
                           "FacetView.html#render": {
@@ -856,8 +876,8 @@
                   "docs": {},
                   "r": {
                     "docs": {
-                      "FacetView.html#filters": {
-                        "ref": "FacetView.html#filters",
+                      "FacetView.html#facets": {
+                        "ref": "FacetView.html#facets",
                         "tf": 110
                       },
                       "FacetView.html#selections": {
@@ -870,14 +890,30 @@
               }
             }
           }
+        },
+        "t": {
+          "docs": {},
+          "y": {
+            "docs": {},
+            "p": {
+              "docs": {},
+              "e": {
+                "docs": {
+                  "FacetView.html#addFacet": {
+                    "ref": "FacetView.html#addFacet",
+                    "tf": 20
+                  }
+                }
+              }
+            }
+          }
         }
       },
-      "length": 50
+      "length": 52
     },
     "corpusTokens": [
       "add",
-      "addfilt",
-      "array",
+      "addfacet",
       "augmented.j",
       "class",
       "data",
@@ -885,8 +921,8 @@
       "document",
       "facet",
       "facetview",
-      "facetview#addfilt",
-      "facetview#filt",
+      "facetview#addfacet",
+      "facetview#facet",
       "facetview#remov",
       "facetview#rend",
       "facetview#select",
@@ -894,7 +930,7 @@
       "filter",
       "function",
       "global",
-      "id",
+      "identifi",
       "index",
       "list",
       "list:class",
@@ -911,6 +947,7 @@
       "simpl",
       "simpli",
       "submit",
+      "type",
       "view"
     ],
     "pipeline": [
@@ -964,13 +1001,13 @@
       "description": "Simple selection facet view",
       "body": ""
     },
-    "FacetView.html#filters": {
-      "id": "FacetView.html#filters",
+    "FacetView.html#facets": {
+      "id": "FacetView.html#facets",
       "kind": "member",
-      "title": "filters",
-      "longname": "FacetView#filters",
-      "name": "filters",
-      "tags": "FacetView#filters filters",
+      "title": "facets",
+      "longname": "FacetView#facets",
+      "name": "facets",
+      "tags": "FacetView#facets facets",
       "summary": "",
       "description": "Raw data of the filter data passed rendered"
     },
@@ -984,13 +1021,13 @@
       "summary": "",
       "description": ""
     },
-    "FacetView.html#addFilter": {
-      "id": "FacetView.html#addFilter",
+    "FacetView.html#addFacet": {
+      "id": "FacetView.html#addFacet",
       "kind": "function",
-      "title": "addFilter( id, name, Array )",
-      "longname": "FacetView#addFilter",
-      "name": "addFilter",
-      "tags": "FacetView#addFilter addFilter",
+      "title": "addFacet( identifier, name, data, type )",
+      "longname": "FacetView#addFacet",
+      "name": "addFacet",
+      "tags": "FacetView#addFacet addFacet",
       "summary": "",
       "description": "Add a filter to render"
     },

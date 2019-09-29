@@ -10,9 +10,9 @@ Augmented.js Presentation - Configurable facet View
 
 -   [FacetView](#facetview)
     -   [Parameters](#parameters)
-    -   [addFilter](#addfilter)
+    -   [addFacet](#addfacet)
         -   [Parameters](#parameters-1)
-    -   [filters](#filters)
+    -   [facets](#facets)
         -   [Properties](#properties)
     -   [render](#render)
     -   [remove](#remove)
@@ -31,24 +31,24 @@ Simple selection facet view
 
 -   `options`  
 
-### addFilter
+### addFacet
 
 Add a filter to render
 
 #### Parameters
 
--   `id` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** ID of the group
+-   `identifier` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** ID of the group
 -   `name` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the group
--   `collection`  
--   `Array` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** of objects { name: value } of the selections
+-   `data` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of objects { name: value } of the selections
+-   `type` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** A facet type (defaults to check)
 
-### filters
+### facets
 
 Raw data of the filter data passed rendered
 
 #### Properties
 
--   `filters` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** 
+-   `facets` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** 
 
 ### render
 
@@ -71,3 +71,5 @@ Submit the selections
 #### Properties
 
 -   `selections` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Returns an object of keys and values of selections from the facets
