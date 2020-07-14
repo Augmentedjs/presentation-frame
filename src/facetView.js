@@ -1,5 +1,5 @@
 import { DirectiveView } from "presentation-decorator";
-import Dom from "presentation-dom";
+import { Dom } from "presentation-dom";
 import Facet from "./models/facet.js";
 
 import { createTemplate } from "./functions.js";
