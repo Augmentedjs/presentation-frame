@@ -1,14 +1,14 @@
-
 describe("Given Augmented Presentation FacetView", () => {
 	it("is defined", () => {
-		expect(FacetView).to.not.be.undefined;
+		console.debug("view", Facet.FacetView);
+		expect(Facet.FacetView).to.not.be.undefined;
 	});
 
 	describe("Given an instance of FacetView", () => {
 		let view;
 
 		beforeEach(() => {
-			view = new FacetView();
+			view = new Facet.FacetView();
 		});
 
 		afterEach(() => {
@@ -17,7 +17,7 @@ describe("Given Augmented Presentation FacetView", () => {
 		});
 
 		it("instance is an instance of FacetView", () => {
-			expect(view instanceof FacetView).to.be.true;
+			expect(view instanceof Facet.FacetView).to.be.true;
 		});
 
 		it("can add facet data", () => {

@@ -10,34 +10,16 @@ import { FACET_FORM_ID, DEFAULT_STYLE } from "./constants.js";
  * @extends DirectiveView
  */
 class FacetView extends DirectiveView {
-  constructor(options) {
-    if (!options) {
-      options = {};
-    }
+  constructor(options = {}) {
     if (options.style) {
       options.style += ` ${DEFAULT_STYLE}`;
     } else {
       options.style = DEFAULT_STYLE;
     }
-
     super(options);
-    if (options.facets) {
-      this._facets = options.facets;
-    } else {
-      this._facets = [];
-    }
-
-    if (options.title) {
-      this._title = options.title;
-    } else {
-      this._title = null;
-    }
-
-    if (options.button && options.button) {
-      this._button = options.button;
-    } else {
-      this._button = null;
-    }
+    this._facets = (options.facets) ? options.facets : [];
+    this.title = (options.title) ? options.title : null;
+    this._button = (options._button) ? options._button : null;
   };
 
   /**
@@ -49,7 +31,12 @@ class FacetView extends DirectiveView {
    */
   addFacet(identifier, name, data, type) {
     if (identifier && name && data) {
-      return this._facets.push(new Facet({ "identifier": identifier, "name": name, "data": data, "type": type }));
+      return this._facets.push(new Facet({
+        "identifier": identifier,
+        "name": name,
+        "data": data,
+        "type": type
+      }));
     }
     return this._facets.length;
   };
@@ -73,11 +60,11 @@ class FacetView extends DirectiveView {
   /**
    * Render the view
    */
-  render() {
-    this.template = createTemplate(this.name, this._facets, this._title, this._button);
-    super.render();
-    this.syncAllBoundElements();
-    this.delegateEvents();
+  async render() {
+    this.template = await createTemplate(this.name, this._facets, this._title, this._button);
+    await super.render();
+    await this.syncAllBoundElements();
+    await this.delegateEvents();
     return this;
   };
 

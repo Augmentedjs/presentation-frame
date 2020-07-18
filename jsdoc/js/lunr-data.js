@@ -96,6 +96,7 @@ window.lunrData = {
         "FacetView.html#render": [
           "facetview#rend",
           "function",
+          "lt;async&gt",
           "render",
           "view"
         ],
@@ -413,7 +414,7 @@ window.lunrData = {
                       },
                       "FacetView.html#render": {
                         "ref": "FacetView.html#render",
-                        "tf": 775
+                        "tf": 725
                       }
                     }
                   }
@@ -598,6 +599,41 @@ window.lunrData = {
                               "list_class.html": {
                                 "ref": "list_class.html",
                                 "tf": 1300
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "t": {
+            "docs": {},
+            ";": {
+              "docs": {},
+              "a": {
+                "docs": {},
+                "s": {
+                  "docs": {},
+                  "y": {
+                    "docs": {},
+                    "n": {
+                      "docs": {},
+                      "c": {
+                        "docs": {},
+                        "&": {
+                          "docs": {},
+                          "g": {
+                            "docs": {},
+                            "t": {
+                              "docs": {
+                                "FacetView.html#render": {
+                                  "ref": "FacetView.html#render",
+                                  "tf": 50
+                                }
                               }
                             }
                           }
@@ -909,7 +945,7 @@ window.lunrData = {
           }
         }
       },
-      "length": 52
+      "length": 53
     },
     "corpusTokens": [
       "add",
@@ -934,6 +970,7 @@ window.lunrData = {
       "index",
       "list",
       "list:class",
+      "lt;async&gt",
       "member",
       "name",
       "next",
@@ -1034,7 +1071,7 @@ window.lunrData = {
     "FacetView.html#render": {
       "id": "FacetView.html#render",
       "kind": "function",
-      "title": "render()",
+      "title": "&lt;async&gt; render()",
       "longname": "FacetView#render",
       "name": "render",
       "tags": "FacetView#render render",

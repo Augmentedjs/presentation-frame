@@ -1,4 +1,4 @@
-import Model from "presentation-models";
+import { Model } from "presentation-models";
 import Schema from "../schemas/facet.js";
 
 class Facet extends Model {

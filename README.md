@@ -29,7 +29,7 @@ Simple selection facet view
 
 ### Parameters
 
--   `options`  
+-   `options`   (optional, default `{}`)
 
 ### addFacet
 
